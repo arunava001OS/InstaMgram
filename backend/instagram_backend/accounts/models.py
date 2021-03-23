@@ -6,9 +6,12 @@ from django.dispatch import receiver
 # Create your models here.
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to='profile_pictures/')
+    #profile_picture = models.ImageField(upload_to='profile_pictures/')
+    followers = models.IntegerField(default=0)
+    following = models.IntegerField(default=0)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+        print("New Profile Created !!!")

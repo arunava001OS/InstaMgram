@@ -1,9 +1,9 @@
-from django.urls import path,include
+from django.urls import path
 
-from .views import *
+from accounts.api import views
 
 urlpatterns = [
-    path('register/',views.register_view,anme="register"),
-    path('login/',views.login_view,anme="register"),
+    path('register/',views.register_view,name="register"),
+    path('login/',views.login_view,name="register"),
     path('update_profile/',views.profile_update_view,name="register"),
 ]
