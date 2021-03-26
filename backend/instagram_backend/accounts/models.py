@@ -17,8 +17,14 @@ class Profile(models.Model):
     
     gender = models.CharField(max_length=1,choices = [('M','Male'),('F','Female'),('O','Others')],default='O')
 
-    followers = models.IntegerField(default=0)
-    following = models.IntegerField(default=0)
+    followers_count = models.IntegerField(default=0)
+    following_count = models.IntegerField(default=0)
+
+    def __str__(self) :
+        if(self.middlename != ''):
+            return "{} {} {}".format(self.firstname,self.middlename,self.lastname)
+        else:
+            return "{} {}".format(self.firstname,self.lastname)
 
 @receiver(post_save, sender=User)
 def create_user_token(sender, instance, created, **kwargs):

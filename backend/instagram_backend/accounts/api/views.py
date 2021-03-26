@@ -1,4 +1,3 @@
-from accounts.models import Profile
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view,permission_classes,authentication_classes
@@ -6,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
 from .serializers import RegistrationSerializer,ProfileSerializer
+
+from accounts.models import Profile
 
 @api_view(['POST'])
 def register_view(request):
@@ -46,7 +47,7 @@ def profile_update_view(request):
     data['middlename'] = profile.middlename
     data['lastname'] = profile.lastname
     data['gender'] = profile.gender
-    data['followers'] = profile.followers
-    data['following'] = profile.following
+    data['followers'] = profile.followers_count
+    data['following'] = profile.following_count
     return Response(data)
         
