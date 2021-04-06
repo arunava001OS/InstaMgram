@@ -9,7 +9,7 @@ from rest_framework.authtoken.models import Token
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
-    #profile_picture = models.ImageField(upload_to='profile_pictures/')
+    profile_picture = models.ImageField(upload_to='profile_pictures/',null= True)
 
     firstname = models.CharField(max_length=100,default='')
     middlename = models.CharField(max_length=100,blank=True)

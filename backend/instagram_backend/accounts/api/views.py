@@ -1,5 +1,4 @@
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import authentication,permissions,generics
 from rest_framework.decorators import api_view,permission_classes,authentication_classes
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
@@ -25,8 +24,8 @@ def register_view(request):
         return Response(data)
 
 @api_view(['GET','POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
 def profile_update_view(request):
     data = {}
     if request.method == 'POST':
@@ -50,4 +49,3 @@ def profile_update_view(request):
     data['followers'] = profile.followers_count
     data['following'] = profile.following_count
     return Response(data)
-        

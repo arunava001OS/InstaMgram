@@ -1,4 +1,3 @@
-from typing import ClassVar
 from rest_framework import serializers
 
 from accounts.models import Profile
@@ -33,4 +32,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['firstname','middlename','lastname','gender']
+        fields = ['id','firstname','middlename','lastname','profile_picture','followers_count','following_count','gender']

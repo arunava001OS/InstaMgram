@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     ##My Apps
     'accounts.apps.AccountsConfig',
-    'post.apps.PostConfig'
+    'post.apps.PostConfig',
+    'social.apps.SocialConfig'
 ]
 
 MIDDLEWARE = [
