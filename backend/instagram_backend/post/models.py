@@ -13,3 +13,6 @@ class Post(models.Model):
     def __str__(self):
         return self.profile.firstname +" "+ self.profile.middlename +" "+ self.profile.lastname + " - " + str(self.date)
 
+    def delete(self, using=None, keep_parents=False):
+        self.image.delete()
+        super().delete()
